@@ -1,1 +1,10 @@
-180 1 205 33 138 208 128 194 2 180 2 205 33 180 76 205 33
+mov ah 2
+mov si 12898
+mov dx si
+int 33
+mov dl dh
+int 33
+mov ah 76
+int 33
+end
+

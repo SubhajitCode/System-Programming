@@ -17,6 +17,25 @@ int f(char t[])
 		return 5;
 	if(strcmp(t,"dh")==0)
 		return 6;
+
+
+	if(strcmp(t,"ax")==0)
+		return 8;
+	if(strcmp(t,"cx")==0)
+		return 9;
+	if(strcmp(t,"dx")==0)
+		return 10;
+	if(strcmp(t,"bx")==0)
+		return 11;
+	if(strcmp(t,"sp")==0)
+		return 12;
+	if(strcmp(t,"bp")==0)
+		return 13;
+	if(strcmp(t,"si")==0)
+		return 14;
+	if(strcmp(t,"di")==0)
+		return 15;
+	
 return 200;	
 }
 int main()
@@ -47,13 +66,28 @@ int main()
 		if(strcmp(t,"mov")==0)
 		{
 			scanf("%s%s",u,v);i=i+2;
-			if(f(v)<200)
+			if(f(u)>=8)
 			{
-				printf("138 %d ",192+8*f(u)+f(v));								
+				if(f(v)<200)
+				{
+					printf("139 %d ",192+8*(f(u)-8)+f(v)-8);
+				}
+				else
+				{
+					printf("%d %d %d ",176+f(u),atoi(v)%256,atoi(v)/256);
+				}
 			}
-			else 
+			else
 			{
-				printf("%d %d ",176+f(u),atoi(v));			
+				if(f(v)<200)
+				{
+
+					printf("138 %d ",192+8*f(u)+f(v));								
+				}
+				else 
+				{
+					printf("%d %d ",176+f(u),atoi(v));			
+				}
 			}
 		}
 	}

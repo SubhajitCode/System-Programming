@@ -1,7 +1,7 @@
 #include<stdio.h>
 int main()
 {
-	int i=0,cy=1,x,y,z,p,q,r[8],a[10000],pc=0;
+	int i=0,cy=1,x,y,z,p,q,r[8],a[10000],pc=0,s[8];
 	char t[10],c;
 	FILE *fp;
 	printf("Give  me file Name:");
@@ -61,6 +61,23 @@ int main()
 			y=a[pc++];
 			if(cy==1)
 				pc=pc+y;
+		}
+		if(x==139)
+		{
+			y=a[pc++];p=y%64/8;q=y%8;s[p]=s[q];
+			if(p<4)
+			{
+				r[p]=s[p]%256;r[p+4]=s[p]/256;
+			}
+		}
+		if((x>183)&&(x<192))
+		{
+			y=a[pc++];z=a[pc++];p=x%8;s[p]=y+z*256;
+			if(p<4)
+			{
+				r[p]=y;
+				r[p+4]=z;			
+			}
 		}
 		
 	}
